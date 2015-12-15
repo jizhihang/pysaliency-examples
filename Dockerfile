@@ -9,8 +9,8 @@ RUN git clone https://github.com/NUS-VIP/salicon-api /opt/salicon-api
 
 USER main
 
-RUN conda install numpy scipy cython theano  natsort dill
-RUN conda install -n python3 numpy scipy cython theano  natsort dill
+RUN conda install numpy scipy cython theano  natsort dill seaborn
+RUN conda install -n python3 numpy scipy cython theano  natsort dill seaborn
 RUN pip install git+https://github.com/matthias-k/optpy
 RUN /bin/bash -c 'source activate python3  && pip install git+https://github.com/matthias-k/optpy && source deactivate'
 ENV PYTHONPATH /opt/salicon-api/PythonAPI:$PYTHONPATH
