@@ -16,6 +16,6 @@ RUN /bin/bash -c 'source activate python3  && pip install hdf5storage git+https:
 ENV PYTHONPATH /opt/salicon-api/PythonAPI:$PYTHONPATH
 RUN git clone https://github.com/matthias-k/pysaliency && cd pysaliency && python setup.py install
 RUN /bin/bash -c 'source activate python3  && cd pysaliency && python setup.py install && source deactivate && cd .. && rm -rf pysaliency'
-ADD utils/predownload.py /tmp/
-RUN python /tmp/predownload.py
+ADD utils/predownload.py /home/main/notebooks/
+RUN cd /home/main/notebooks && python predownload.py && rm predownload.py
 #RUN /bin/bash -c 'source activate python3  && python utils/predownload.py && source deactivate && cd ..'
