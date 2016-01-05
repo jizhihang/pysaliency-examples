@@ -17,6 +17,7 @@ ENV PYTHONPATH /opt/salicon-api/PythonAPI:$PYTHONPATH
 RUN git clone https://github.com/matthias-k/pysaliency && cd pysaliency && python setup.py install
 RUN /bin/bash -c 'source activate python3  && cd pysaliency && python setup.py install && source deactivate && cd .. && rm -rf pysaliency'
 RUN mkdir -p /home/main/notebooks/
-ADD utils/predownload.py /home/main/notebooks/
-RUN cd /home/main/notebooks && python predownload.py && rm predownload.py
+#ADD utils/predownload.py /home/main/notebooks/
+#RUN cd /home/main/notebooks && python predownload.py && rm predownload.py
 #RUN /bin/bash -c 'source activate python3  && python utils/predownload.py && source deactivate && cd ..'
+RUN cd /home/main/notebooks && wget http://kalliope.matthias-k.org/~matthias/pysaliency/pysaliency-examples-cache.tar.gz && tar xzf pysaliency-examples-cache.tar.gz && rm pysaliency-examples-cache.tar.gz
